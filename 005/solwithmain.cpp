@@ -1,17 +1,16 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Solution {
 public:
     string longestPalindrome(string s) {
-        if (s.empty()) return "";
         int n = s.size();
+        if (n == 0) return "";
+        
         int start = 0, maxLength = 1;
-
-        // dp[i][j] will be 'true' if the string from index i to j is a palindrome
-        bool dp[n][n];
-        memset(dp, false, sizeof(dp));
+        vector<vector<bool>> dp(n, vector<bool>(n, false));
 
         // All substrings of length 1 are palindromes
         for (int i = 0; i < n; ++i) {
